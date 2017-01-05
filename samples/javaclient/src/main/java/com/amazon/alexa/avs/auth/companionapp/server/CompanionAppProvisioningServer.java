@@ -82,6 +82,12 @@ public class CompanionAppProvisioningServer {
                 .getSslKeyStorePassphrase());
         sslContextFactory.setKeyStoreType("PKCS12");
 
+        sslContextFactory.setTrustStorePath(deviceConfig.getCompanionAppInfo().getSslKeyStore());
+        sslContextFactory.setTrustStorePassword(deviceConfig
+                .getCompanionAppInfo()
+                .getSslKeyStorePassphrase());
+        sslContextFactory.setTrustStoreType("PKCS12");
+
         // SSL HTTP Configuration
         HttpConfiguration https_config = new HttpConfiguration(http_config);
         https_config.addCustomizer(new SecureRequestCustomizer());
